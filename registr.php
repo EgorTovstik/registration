@@ -17,7 +17,7 @@
         <label>Почта</label>
         <input type="email" placeholder="Введите адрес электронной почты" name='email' value="<?php echo $_POST['email'] ?? '' ?>">
         <label>Логин</label>
-        <input type="text" name='login' value="<?php echo $_POST['login'] ?? '' ?>">
+        <input type="text" placeholder='Введите логин' name='login' value="<?php echo $_POST['login'] ?? '' ?>">
         <label>Пароль</label>
         <input type="password" placeholder="Введите свой пароль" name='pswrd' value="<?php echo $_POST['pswrd'] ?? '' ?>">
         <label>Подтверждение пароля</label>

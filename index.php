@@ -14,9 +14,7 @@
         <input type="text" placeholder="Введите свой логн" name='login' value="<?php echo $_POST['login'] ?? '' ?>">
         <label>Пароль</label>
         <input type="password" placeholder="Введите свой пароль" name='pswrd' value="<?php echo $_POST['pswrd'] ?? '' ?>">
-        <div class="mb-3">
-            <input type="submit" class="btn btn-primary" value="Войти">
-        </div>
+        <button>Войти</button>
         <p>
             У вас нет аккаунта? - <a href="/registr.php">зарегистрируйтесь!</a>
         </p>
