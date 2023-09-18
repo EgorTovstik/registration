@@ -13,15 +13,15 @@
     <?php if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
     <form action="index.php" method="post">
         <label>ФИО</label>
-        <input type="text" placeholder="Введите свое ФИО" value="<?php echo $_POST['FIO'] ?? '' ?>">
+        <input type="text" placeholder="Введите свое ФИО" name='FIO' value="<?php echo $_POST['FIO'] ?? '' ?>">
         <label>Почта</label>
-        <input type="email" placeholder="Введите адрес электронной почты" value="<?php echo $_POST['email'] ?? '' ?>">
+        <input type="email" placeholder="Введите адрес электронной почты" name='email' value="<?php echo $_POST['email'] ?? '' ?>">
         <label>Логин</label>
-        <input type="text" value="<?php echo $_POST['login'] ?? '' ?>">
+        <input type="text" name='login' value="<?php echo $_POST['login'] ?? '' ?>">
         <label>Пароль</label>
-        <input type="password" placeholder="Введите свой пароль" value="<?php echo $_POST['pswrd'] ?? '' ?>">
+        <input type="password" placeholder="Введите свой пароль" name='pswrd' value="<?php echo $_POST['pswrd'] ?? '' ?>">
         <label>Подтверждение пароля</label>
-        <input type="password" placeholder="Подтвердите пароль" value="<?php echo $_POST['pswrd'] ?? '' ?>">
+        <input type="password" placeholder="Подтвердите пароль" name="pswrd" value="<?php echo $_POST['pswrd'] ?? '' ?>">
         <button>Войти</button>
         <p>
             У вас уже есть аккаунт? - <a href="/index.php">авторизируйтесь!</a>
