@@ -9,11 +9,11 @@
 <body>
     <!--Форма авторизации-->
     <?php if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
-    <form action="index.php" method="post">
+    <form action="index.php" method="POST">
         <label>Логин</label>
-        <input type="text" placeholder="Введите свой логн" value="<?php echo $_POST['login'] ?? '' ?>">
+        <input type="text" placeholder="Введите свой логн" name='login' value="<?php echo $_POST['login'] ?? '' ?>">
         <label>Пароль</label>
-        <input type="password" placeholder="Введите свой пароль" value="<?php echo $_POST['pswrd'] ?? '' ?>">
+        <input type="password" placeholder="Введите свой пароль" name='pswrd' value="<?php echo $_POST['pswrd'] ?? '' ?>">
         <div class="mb-3">
             <input type="submit" class="btn btn-primary" value="Войти">
         </div>
