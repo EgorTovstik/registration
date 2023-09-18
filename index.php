@@ -10,7 +10,7 @@
 <body>
 
     <!--Форма авторизации-->
-    <form action="" method="">
+    <form>
         <label>Логин</label>
         <input type="text" placeholder="Введите свой логн">
         <label>Пароль</label>

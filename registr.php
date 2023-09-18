@@ -10,7 +10,7 @@
 <body>
 
     <!--Форма авторизации-->
-    <form action="" method="">
+    <form>
         <label>ФИО</label>
         <input type="text" placeholder="Введите свое ФИО">
         <label>Почта</label>
