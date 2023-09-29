@@ -1,3 +1,15 @@
+<?php
+        require_once 'User.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $user = new User((string) $_POST['fio'], (string) $_POST['email'], (string) $_POST['login'], (string) $_POST['pswrd'], (string) $_POST['pswrd_confirm']);
+            if (!$user -> isPassworsEquals()) {
+                echo 'Пароли не совпадают!';
+                die();
+            }
+        }
+?>
+
+
 <!doctype html>
 
 <html lang = "en">
@@ -11,17 +23,17 @@
 
     <!--Форма Регистрации-->
     <?php if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
-    <form action="index.php" method="post">
-        <label>ФИО</label>
-        <input type="text" placeholder="Введите свое ФИО" name='FIO' value="<?php echo $_POST['FIO'] ?? '' ?>">
-        <label>Почта</label>
-        <input type="email" placeholder="Введите адрес электронной почты" name='email' value="<?php echo $_POST['email'] ?? '' ?>">
-        <label>Логин</label>
-        <input type="text" placeholder='Введите логин' name='login' value="<?php echo $_POST['login'] ?? '' ?>">
-        <label>Пароль</label>
-        <input type="password" placeholder="Введите свой пароль" name='pswrd' value="<?php echo $_POST['pswrd'] ?? '' ?>">
-        <label>Подтверждение пароля</label>
-        <input type="password" placeholder="Подтвердите пароль" name="pswrd" value="<?php echo $_POST['pswrd'] ?? '' ?>">
+    <form action="mylist.php" method="post">
+        <label for="fioInput">ФИО</label>
+        <input type="text" placeholder="Введите свое ФИО" name="fio" id='fioInput'>
+        <label for='MailInput'>Почта</label>
+        <input type="email" placeholder="Введите адрес электронной почты" name='email' id='MailInput'>
+        <label for="LoginInput">Логин</label>
+        <input type="text" placeholder='Введите логин' name='login' id="LoginInput">
+        <label for="pswrdInput">Пароль</label>
+        <input type="password" placeholder="Введите свой пароль" name='pswrd' id="pswrdInput">
+        <label type="pswrdInputCheck">Подтверждение пароля</label>
+        <input type="password" placeholder="Подтвердите пароль" name="pswrd_confirm" id="pswrdInputCheck">
         <button>Войти</button>
         <p>
             У вас уже есть аккаунт? - <a href="/index.php">авторизируйтесь!</a>
@@ -30,16 +42,6 @@
         <?php
     }
     ?>
-    <div class="container">
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo 'FIO = ' . ($_POST['FIO'] ?? '');
-            echo 'email = ' . ($_POST['email'] ?? '');
-            echo '<b>login</b> = ' . ($_POST['login'] ?? '') . '<br>';
-            echo 'pswrd = ' . ($_POST['pswrd'] ?? '');
-        }
-        ?>
-    </div>
 </body>
 </html>
 

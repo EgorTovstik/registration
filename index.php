@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Авторизация и регистрация</title>
-    <link rel="stylesheet" href="/assets/main.css"
+    <link rel="stylesheet" href="/assets/main.css">
 </head>
 <body>
     <!--Форма авторизации-->
