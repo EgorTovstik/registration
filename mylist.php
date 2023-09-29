@@ -1,15 +1,11 @@
 <?php
     
     require_once 'User.php';
-    require_once 'FileUserPersist.php';
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $user = new User((string) $_POST['fio'], (string) $_POST['email'], (string) $_POST['login'], (string) $_POST['pswrd'], (string) $_POST['pswrd_confirm']);
 
-        $filePersister = new FileUserPersist();
-
-        $filePersister->save($user);
     }
     ?>
 

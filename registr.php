@@ -1,14 +1,26 @@
 <?php
-        require_once 'User.php';
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $user = new User((string) $_POST['fio'], (string) $_POST['email'], (string) $_POST['login'], (string) $_POST['pswrd'], (string) $_POST['pswrd_confirm']);
-            if ($user -> isPassworsEquals()) {
-                header('Location: mylist.php');
-            } else {
-                header('Location: registr.php?error=passwordsAreDifferent');
+    require_once 'User.php';
+    require_once 'FileUserPersist.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $user = new User((string) $_POST['fio'], (string) $_POST['email'], (string) $_POST['login'], (string) $_POST['pswrd'], (string) $_POST['pswrd_confirm']);
+        if ($user -> isPassworsEquals()) {
+
+            $filePersister = new FileUserPersist();
+
+            if($filePersister->get($_POST['login']) instanceof User) {
+                header('Location: registr.php?error=userAllreadyExist');
                 die();
             }
+
+            $filePersister->save($user);
+
+            header('Location: mylist.php');
+        } else {
+            header('Location: registr.php?error=passwordsAreDifferent');
+            die();
         }
+    }
 ?>
 
 
@@ -40,6 +52,10 @@
             <?php
                 if(isset($_GET['error']) && 'passwordsAreDifferent' === $_GET['error']){
                     echo 'Регистрация не удалась, пароли не одинаковые';
+                }
+
+                if(isset($_GET['error']) && 'userAllreadyExist' === $_GET['error']){
+                    echo 'Пользователь с таким логином уже создан попробуйте другой';
                 }
             ?>
         </div>

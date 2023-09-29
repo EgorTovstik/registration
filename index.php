@@ -1,3 +1,16 @@
+<?php
+    require_once 'User.php';
+    require_once 'FileUserPersist.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        
+        if (isset($_GET['action']) && 'login' === $_GET['action']){
+            var_dump($_POST);
+            die();
+        }
+    }
+?>
+
 <!doctype html>
 
 <html lang = "en">
@@ -10,10 +23,10 @@
     <!--Форма авторизации-->
     <?php if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
     <form action="index.php" method="POST">
-        <label>Логин</label>
-        <input type="text" placeholder="Введите свой логн" name='login' value="<?php echo $_POST['login'] ?? '' ?>">
-        <label>Пароль</label>
-        <input type="password" placeholder="Введите свой пароль" name='pswrd' value="<?php echo $_POST['pswrd'] ?? '' ?>">
+        <label for="LoginInput">Логин</label>
+        <input type="text" placeholder="Введите свой логн" name='login' id="LoginInput">
+        <label for="pswrdInput">Пароль</label>
+        <input type="password" placeholder="Введите свой пароль" name='pswrd' id="pswrdInput">
         <button>Войти</button>
         <p>
             У вас нет аккаунта? - <a href="/registr.php">зарегистрируйтесь!</a>
@@ -22,13 +35,5 @@
         <?php
     }
     ?>
-    <div class="container">
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo '<b>login</b> = ' . ($_POST['login'] ?? '') . '<br>';
-            echo 'pswrd = ' . ($_POST['pswrd'] ?? '');
-        }
-        ?>
-    </div>
 </body>
 </html>

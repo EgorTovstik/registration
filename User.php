@@ -2,17 +2,22 @@
 
 class User
 {
-    private \DateTimeImmutable $createdAD;
+    private ?\DateTimeImmutable $createdAD;
 
     public function __construct(
         private readonly string $fio,
         private readonly string $email,
         private readonly string $login,
         private readonly string $pswrd,
-        private readonly string $pswrd_confirm
+        private readonly string $pswrd_confirm,
+        $createdAD = null, 
     )
     {
-        $this -> createdAD = new \DateTimeImmutable();
+        $this->createdAD = $createdAD;
+        if (null === $this -> createdAD){
+            $this -> createdAD = new \DateTimeImmutable();
+        }
+
     }
 
     public function getFIO(): string
