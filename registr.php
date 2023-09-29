@@ -5,8 +5,7 @@
             if ($user -> isPassworsEquals()) {
                 header('Location: mylist.php');
             } else {
-                header('Location: registr.php');
-                echo('Пароли не совпали');
+                header('Location: registr.php?error=passwordsAreDifferent');
                 die();
             }
         }
@@ -26,7 +25,7 @@
 
     <!--Форма Регистрации-->
     <?php if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
-    <form action="mylist.php" method="post">
+    <form action="" method="post">
         <label for="fioInput">ФИО</label>
         <input type="text" placeholder="Введите свое ФИО" name="fio" id='fioInput'>
         <label for='MailInput'>Почта</label>
@@ -37,6 +36,13 @@
         <input type="password" placeholder="Введите свой пароль" name='pswrd' id="pswrdInput">
         <label type="pswrdInputCheck">Подтверждение пароля</label>
         <input type="password" placeholder="Подтвердите пароль" name="pswrd_confirm" id="pswrdInputCheck">
+        <div class="error">
+            <?php
+                if(isset($_GET['error']) && 'passwordsAreDifferent' === $_GET['error']){
+                    echo 'Регистрация не удалась, пароли не одинаковые';
+                }
+            ?>
+        </div>
         <button>Войти</button>
         <p>
             У вас уже есть аккаунт? - <a href="/index.php">авторизируйтесь!</a>

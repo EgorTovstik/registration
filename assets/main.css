@@ -24,7 +24,7 @@ p {
 form {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 600px;
 }
 
 input {
@@ -40,4 +40,10 @@ button {
     background: #e3e3e3;
     border: unset;
     cursor: pointer;
+}
+
+.error {
+    background-color: brown;
+    color: white;
+    margin-bottom: 10px;
 }

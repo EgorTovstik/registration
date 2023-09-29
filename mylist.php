@@ -10,9 +10,6 @@
         $filePersister = new FileUserPersist();
 
         $filePersister->save($user);
-
-        header('Location: mylist.php?registranion=success');
-        die();
     }
     ?>
 
