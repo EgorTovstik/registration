@@ -1,7 +1,7 @@
 <?php 
 require_once 'User.php';
 
-interface UserPersistInterface
+interface UserPersistInterface 
 {
     public function save(User $user): void;
 

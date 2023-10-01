@@ -5,17 +5,21 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $user = new User((string) $_POST['fio'], (string) $_POST['email'], (string) $_POST['login'], (string) $_POST['pswrd'], (string) $_POST['pswrd_confirm']);
         if ($user -> isPassworsEquals()) {
+            $filePersist = new FileUserPersist();
 
-            $filePersister = new FileUserPersist();
-
-            if($filePersister->get($_POST['login']) instanceof User) {
+            if($filePersist->get($_POST['login']) instanceof User) {
                 header('Location: registr.php?error=userAllreadyExist');
                 die();
             }
 
-            $filePersister->save($user);
+            session_start();
 
+            $_SESSION['user'] = $user->getLogin();
+            
             header('Location: mylist.php');
+            $filePersist->save($user);
+
+            
         } else {
             header('Location: registr.php?error=passwordsAreDifferent');
             die();
@@ -33,6 +37,7 @@
     <title>Авторизация и регистрация</title>
     <link rel="stylesheet" href="/assets/main.css"
 </head>
+
 <body>
 
     <!--Форма Регистрации-->
@@ -59,7 +64,7 @@
                 }
             ?>
         </div>
-        <button>Войти</button>
+        <button>Зарегистрировать</button>
         <p>
             У вас уже есть аккаунт? - <a href="/index.php">авторизируйтесь!</a>
         </p>
